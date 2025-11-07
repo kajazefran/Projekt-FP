@@ -1,3 +1,5 @@
+\documentclass{article}
+
 \usepackage{amsmath}
 \usepackage{amsfonts} 
 \usepackage{amssymb}
@@ -6,25 +8,23 @@
 \usepackage{dsfont}
 
 \geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm}
+\newtheorem{definition}{Definicija}[section] 
 
 \title{	
     \normalfont\normalsize
-	\textsc{Univerza v Ljubljani, Fakulteta za matematiko in fiziko}\\ 
+	\textsc{Fakulteta za matematiko in fiziko\\ Univerza v Ljubljani}\\ 
 	\vspace{25pt}
 	\rule{\linewidth}{0.5pt}\\
 	\vspace{20pt}
-	{\huge \textbf{General Sombor Index}}\\ 
+	{\huge \textbf{Splošni Somborjev indeks}}\\ 
 	\vspace{12pt}
 	\rule{\linewidth}{2pt}\\
 	\vspace{12pt}
 }
 
-\author{\LARGE Pecoraro Eliza Katarina, Žefran Kaja}
+\author{Pecoraro Eliza Katarina, Žefran Kaja}
 
-\date{marec 2025} 
-
-\newtheorem{definition}{Definicija}[section] 
-\newtheorem{example}{Primer}
+\date{November 2025} 
 
 \begin{document}
 
@@ -32,5 +32,33 @@
 
 \newpage
 \section{Uvod}
-bla bla bla
+Naj bo \( G = (V, E)\) graf sestavljen iz množice vozlišč \( E(G) \) in množice povezav \( V(G) \), kjer je
+\( | E(G) \vert = n \) število vozlišč in \( | V(G) \vert = m \) število povezav.
+Stopnja vozlišča \( d_G(v_i) \) za neko vozlišče \( v_i \in E(G)\) predstavlja število vozlišč s katerimi 
+si je to sosednje, torej med njimi obstaja povezava. Največjo stopnjo vozlišča grafa
+\( G \) označimo z \( \Delta (G) \) oziroma, kot v nadaljevanju tudi le kot \( \Delta \).\\
+
+V kemijski matematiki imajo zelo pomembno vlogo topološki indeksi, ki temeljijo na stopnjah 
+vozlišč. Ti so uporabljeni v analizah in pri določanju napovedi. Gre za numerične vrednosti, 
+ki jih dodelimo molekulam oziroma njihovim strukturnim predstavitvam (grafom).
+Eden izmed teh topoloških indeksov je \textit{splošen Somborjev indeks}, ki ga bomo bolj podrobno 
+obravnavali pri tem projektnem delu.
+
+\begin{definition} 
+	Somborjev indeks \( SO_{\alpha}(G) \) grafa \( G \) definiramo kot:
+	\[
+	SO_{\alpha}(G) = \sum_{v_i, v_j \in E(G)} (d_G(v_i)^2 + d_G(v_j)^2)^{\alpha}
+	\]
+	kjer \( d_G(v_i) \in V(G)\) predstavlja stopnjo vozlišča \( v_i \in E(G)\), \( \alpha \) pa je
+	poljuben realen parameter.	
+\end{definition}
+
+\section{Cilj projekta}
+Graf reda \( n \), ki ne vsebuje ciklov imenujemo drevo \( n \)-vozlišč.
+V tem projektnem delu želimo indentificirati drevesa z največjo vrednostjo Somborjevega indeksa znotraj razreda 
+dreves \( n \)-vozlišč, največjo stopnjo \( \Delta \) in parametrom \( \alpha \in (0,1) \).\\
+
+\section{Strukura dela}
+
 \end{document}
+
