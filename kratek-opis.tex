@@ -53,12 +53,38 @@ obravnavali pri tem projektnem delu.
 	poljuben realen parameter.	
 \end{definition}
 
+Za \( \alpha = 0 \) je \( SO_{0}(G) \) enak številu povezav \( m \) na grafu \( G \). Za drevo \( T \)
+z \( n \) vozlišči, pa je \( SO_{0}(T) \) enak \( n -1 \). 
+Splošen Somborjev indeks \( SO_{1/2}(G) \) obravnavamo, ko je \( \alpha = 1/2 \).
+
 \section{Cilj projekta}
 Graf reda \( n \), ki ne vsebuje ciklov imenujemo drevo \( n \)-vozlišč. Zanj uporabimo oznako \( T \in \tau (n, \Delta ) \).\\
 
 V tem projektnem delu želimo indentificirati drevesa z največjo vrednostjo Somborjevega indeksa znotraj razreda 
-dreves \( n \)-vozlišč \( \tau (n, \Delta ) \), največje stopnje \( \Delta \) in parametrom \( \alpha \in (0,1) \).\\
+dreves \( n \)-vozlišč \( \tau (n, \Delta ) \), stopnje \( \Delta \) in parametrom \( \alpha \in (0,1) \).\\
 
+Da bi rešili ta problem, moremo najprej razumeti, kako sama strukura dreves vpliva na Somborjev indeks
+za različne vrednosti \( \alpha \). To lahko razdelimo na dva posamezna dela:
+\begin{itemize}
+	\item \( \alpha > 1 \) in \( \alpha \in [-1, 0) \)
+	\item \( \alpha < 0 \) in \( \alpha > 0 \)
+\end{itemize}
+
+\subsection{\( \alpha > 1 \) in \( \alpha \in [-1, 0) \)}
+\begin{itemize}
+	\item Za \( \alpha > 1\): V tem primeru višje stopnje vozlišč bolj vplivajo na vrednost indeksa, saj člen
+	\( (d_G(v_i)^2 + d_G(v_j)^2)^{\alpha} \) zanje hitro narašča. Zato bomo v tem primeru želeli
+	drevesa z večjimi stopnjami. Drevo, ki je za ta primer najboljše je zvezdno drevo, saj ima centralno
+	vozlišče najvišjo možno stopnjo, vse druge stopnje pa so nizke.
+	\item Za \( \alpha \in [-1, 0) \): Ko bo \( \alpha \) negativen, večje stopnje vozlišč vplivajo na zmanjšanje indeksa.
+	Zato želimo drevesa, kjer so stopnje vozlišč manjše. Drevo, ki je za ta primer najbolše je potno drevo. 
+\end{itemize}
+
+\subsection{\( \alpha < 0 \) in \( \alpha > 0 \)}
+\begin{itemize}
+	\item Za \( \alpha < 0 \): 
+	\item Za \( \alpha > 0 \):
+\end{itemize}
 \section{Strukura dela}
 Pri manjših grafih oziroma drevesih bomo te iskali sistematično, za večje se bomo tega lotili stohastično.
 Ločeno bomo preverili kaj se dogaja pri različnih vrednostih \( \Delta \) in \( \alpha \in (0, 1) \).
