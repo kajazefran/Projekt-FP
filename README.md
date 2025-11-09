@@ -2,8 +2,7 @@
 
 ## Projektna naloga: Splošni Somborjev indeks
 
-V tej projektni nalogi bova preučili **Somborjev indeks** in **splošni Somborjev indeks** (ang. *General Sombor Index*) - kazalnika, 
-ki temeljita na teoriji grafov.
+V tej projektni nalogi bova preučili **splošni Somborjev indeks** (ang. *General Sombor Index*) - kazalnik, ki temelji na teoriji grafov in je pomemben tudi v kemiji.
 
 Projekt vključuje kratko teoretično ozadje, implementacijo izračuna Somborjevega indeksa v okolju **SageMath**, ter prikaz rezultatov 
 na nekaj primerih naključnih grafov.
