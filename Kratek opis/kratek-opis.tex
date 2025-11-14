@@ -1,11 +1,16 @@
 \documentclass{article}
 
+\usepackage[slovene]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts} 
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{geometry}
 \usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 
 \geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm}
 \newtheorem{definition}{Definicija}[section] 
@@ -32,62 +37,127 @@
 
 \newpage
 \section{Teoretični uvod}
-Naj bo \( G = (V, E)\) graf sestavljen iz množice vozlišč \( E(G) \) in množice povezav \( V(G) \), kjer je
-\( | E(G) \vert = n \) število vozlišč in \( | V(G) \vert = m \) število povezav.
-Stopnja vozlišča \( d_G(v_i) \) za neko vozlišče \( v_i \in E(G)\) predstavlja število vozlišč s katerimi 
-si je to sosednje, torej med njimi obstaja povezava. Največjo stopnjo vozlišča grafa
-\( G \) označimo z \( \Delta (G) \) oziroma, kot v nadaljevanju tudi le kot \( \Delta \).\\
+Naj bo \( G = (V, E)\) graf sestavljen iz množice vozlišč \( V(G) \) in množice povezav \( E(G) \), kjer je
+\( | V(G) | = n \) število vozlišč in \( | E(G) | = m \) število povezav.
+Stopnja vozlišča \( d_G(v_i) \) za neko vozlišče \( v_i \in V(G)\) predstavlja število vozlišč, s katerimi 
+je to sosednje, torej med njimi obstaja povezava. Največjo stopnjo vozlišča grafa
+\( G \) označimo z \( \Delta (G) \) oziroma, kot v nadaljevanju, tudi le kot \( \Delta \).\\
 
 V kemijski matematiki imajo zelo pomembno vlogo topološki indeksi, ki temeljijo na stopnjah 
 vozlišč. Ti so uporabljeni v analizah in pri določanju napovedi. Gre za numerične vrednosti, 
 ki jih dodelimo molekulam oziroma njihovim strukturnim predstavitvam (grafom).
-Eden izmed teh topoloških indeksov je \textit{splošen Somborjev indeks}, ki ga bomo bolj podrobno 
+Eden izmed teh topoloških indeksov je \textit{splošni Somborjev indeks}, ki ga bomo bolj podrobno 
 obravnavali pri tem projektnem delu.
 
 \begin{definition} 
-	Somborjev indeks \( SO_{\alpha}(G) \) grafa \( G \) definiramo kot:
+	Splošni Somborjev indeks \( SO_{\alpha}(G) \) grafa \( G \) definiramo kot:
 	\[
-	SO_{\alpha}(G) = \sum_{v_i, v_j \in E(G)} (d_G(v_i)^2 + d_G(v_j)^2)^{\alpha}
+	SO_{\alpha}(G) = \sum_{\{v_i, v_j\} \in E(G)} \bigl(d_G(v_i)^2 + d_G(v_j)^2\bigr)^{\alpha},
 	\]
-	kjer \( d_G(v_i) \in V(G)\) predstavlja stopnjo vozlišča \( v_i \in E(G)\), \( \alpha \) pa je
+	kjer \( d_G(v_i) \) predstavlja stopnjo vozlišča \( v_i \in V(G)\), \( \alpha \) pa je
 	poljuben realen parameter.	
 \end{definition}
 
-Za \( \alpha = 0 \) je \( SO_{0}(G) \) enak številu povezav \( m \) na grafu \( G \). Za drevo \( T \)
-z \( n \) vozlišči, pa je \( SO_{0}(T) \) enak \( n -1 \). 
-Splošen Somborjev indeks \( SO_{1/2}(G) \) obravnavamo, ko je \( \alpha = 1/2 \).
+Za \( \alpha = 0 \) je \( SO_{0}(G) \) enak številu povezav \( m \) v grafu \( G \). Za drevo \( T \)
+z \( n \) vozlišči pa je \( SO_{0}(T) \) enak \( n -1 \). 
+Posebej nas bo zanimal splošni Somborjev indeks \( SO_{\alpha}(G) \) za \( \alpha \in (0,1) \).
 
 \section{Cilj projekta}
-Graf reda \( n \), ki ne vsebuje ciklov imenujemo drevo \( n \)-vozlišč. Zanj uporabimo oznako \( T \in \tau (n, \Delta ) \).\\
+Graf reda \( n \), ki ne vsebuje ciklov, imenujemo drevo z \( n \) vozlišči. Razred vseh dreves reda \( n \)
+z največjo stopnjo \( \Delta \) označimo z \( \tau (n, \Delta ) \).\\
 
-V tem projektnem delu želimo indentificirati drevesa z največjo vrednostjo Somborjevega indeksa znotraj razreda 
-dreves \( n \)-vozlišč \( \tau (n, \Delta ) \), stopnje \( \Delta \) in parametrom \( \alpha \in (0,1) \).\\
+V tem projektnem delu želimo identificirati drevesa z največjo vrednostjo splošnega Somborjevega indeksa znotraj razreda 
+dreves \( n \)-vozlišč \( \tau (n, \Delta ) \), pri dani največji stopnji \( \Delta \) in parametru \( \alpha \in (0,1) \).\\
 
-Da bi rešili ta problem, moremo najprej razumeti, kako sama strukura dreves vpliva na Somborjev indeks
-za različne vrednosti \( \alpha \). To lahko razdelimo na dva posamezna dela:
+Da bi rešili ta problem, moramo najprej razumeti, kako sama struktura dreves vpliva na Somborjev indeks
+za različne vrednosti \( \alpha \). Pri tem nas bodo posebej zanimale vrednosti \( \alpha \), ki so
 \begin{itemize}
-	\item \( \alpha > 1 \) in \( \alpha \in [-1, 0) \)
-	\item \( \alpha < 0 \) in \( \alpha > 0 \)
+	\item zelo blizu 0,
+	\item blizu \( \tfrac{1}{2} \) (z obeh strani),
+	\item zelo blizu 1.
 \end{itemize}
 
 \subsection{\( \alpha > 1 \) in \( \alpha \in [-1, 0) \)}
+Čeprav se v projektu osredotočamo na interval \( \alpha \in (0,1) \), nam analitični rezultati za druge
+vrednosti \( \alpha \) pomagajo pri razumevanju obnašanja indeksa.
+
 \begin{itemize}
-	\item Za \( \alpha > 1\): V tem primeru višje stopnje vozlišč bolj vplivajo na vrednost indeksa, saj člen
-	\( (d_G(v_i)^2 + d_G(v_j)^2)^{\alpha} \) zanje hitro narašča. Zato bomo v tem primeru želeli
-	drevesa z večjimi stopnjami. Drevo, ki je za ta primer najboljše je zvezdno drevo, saj ima centralno
-	vozlišče najvišjo možno stopnjo, vse druge stopnje pa so nizke.
-	\item Za \( \alpha \in [-1, 0) \): Ko bo \( \alpha \) negativen, večje stopnje vozlišč vplivajo na zmanjšanje indeksa.
-	Zato želimo drevesa, kjer so stopnje vozlišč manjše. Drevo, ki je za ta primer najbolše je potno drevo. 
+	\item Za \( \alpha > 1\): v tem primeru višje stopnje vozlišč močno vplivajo na vrednost indeksa, saj člen
+	\( (d_G(v_i)^2 + d_G(v_j)^2)^{\alpha} \) pri večjih stopnjah hitro narašča. Zato so za takšne parametre
+	ekstremna drevesa tista, ki imajo eno vozlišče z zelo veliko stopnjo. Tipičen primer je \emph{zvezdno drevo}, 
+	saj ima centralno vozlišče najvišjo možno stopnjo, vse druge stopnje pa so enake 1.
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\textwidth]{zvezda10.png}
+    \caption{Zvezdni graf reda 10}
+    \label{fig:zvezda10}
+    \end{figure}
+
+    
+	\item Za \( \alpha \in [-1, 0) \): pri negativnih vrednostih parametra \( \alpha \) večje stopnje vozlišč
+	indeks \emph{zmanjšujejo}. Zato so v tem primeru zanimiva drevesa, kjer so stopnje vozlišč čim manjše,
+	in s tem čim bolj enakomerno porazdeljene. Klasičen primer takšnega ekstremnega objekta je \emph{potno drevo}. 
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{pot7.png}
+    \caption{Potni graf dolžine 7}
+    \label{fig:pot7}
+    \end{figure}
 \end{itemize}
 
-\subsection{\( \alpha < 0 \) in \( \alpha > 0 \)}
-\begin{itemize}
-	\item Za \( \alpha < 0 \): 
-	\item Za \( \alpha > 0 \):
-\end{itemize}
+\subsection{Vedenje pri \( \alpha \in (0,1) \)}
+Funkcija \( x \mapsto x^{\alpha},\ \alpha \in (0,1) \)
+je še vedno naraščajoča, vendar konkavna. To pomeni, da večje stopnje vozlišč še vedno povečujejo indeks,
+vendar počasneje kot pri \( \alpha > 1 \). Pričakujemo, da bodo ekstremna drevesa za različne
+pare \( (\Delta, \alpha) \) po obliki nekje med zvezdnim in potnim drevesom.\\
+
 \section{Načrt dela}
-Pri manjših grafih oziroma drevesih bomo te iskali sistematično, za večje se bomo tega lotili stohastično.
-Ločeno bomo preverili kaj se dogaja pri različnih vrednostih \( \Delta \) in \( \alpha \in (0, 1) \).
+Pri manjših grafih oziroma drevesih bomo ekstremna drevesa iskali sistematično, pri večjih pa se bomo problema lotili stohastično.
+Ločeno bomo preverili, kaj se dogaja pri različnih vrednostih \( \Delta \) in \( \alpha \in (0,1) \), pri čemer bomo izbrali nabor
+vrednosti \( \alpha \), ki so:
+\begin{itemize}
+	\item zelo blizu 0,
+	\item blizu \( \tfrac{1}{2} \) z leve in desne,
+	\item zelo blizu 1.
+\end{itemize}
+
+Za izbrano največjo stopnjo \( \Delta \) bomo za manjše \( n \) (na primer do neke zgornje meje, pri kateri je vsa drevesa
+še mogoče generirati) v generirali vsa drevesa reda \( n \), med njimi bomo izbrali tista, ki imajo največjo stopnjo največ \( \Delta \) in za vsako tako drevo izračunali splošni Somborjev indeks \( SO_{\alpha}(G) \) za izbrane vrednosti \( \alpha \). Na koncu bomo poiskali drevesa, ki za dane parametre dosežejo maksimalno vrednost indeksa.
+
+Za večje vrednosti \( n \) sistematična izčrpna preiskava vseh dreves ni več izvedljiva, zato bomo uporabili
+stohastične metode. Osnovna ideja bo, da začnemo z nekim “enostavnim” drevesom (npr.\ zvezdnim ali potnim), na drevesu bomo izvajali lokalne spremembe (remenjave povezav, zamenjave listov ipd.), ki ohranijo lastnost, da je graf drevo in da je največja stopnja največ \( \Delta \). Vsako novo drevo bomo sprejeli ali zavrnili glede na to, ali poveča vrednost \( SO_{\alpha}(G) \). Opazovali bomo trenutno najboljše kandidate in njihove strukture.
+
+Na koncu bomo rezultate za različne pare \( (\Delta, \alpha) \) primerjali s teoretičnimi napovedmi iz članka
+in jih po potrebi grafično prikazali.
+
+\subsection{Uporaba orodja Sage}
+Pri projektu bomo uporabljali orodje Sage. V njem bomo definirali funkcijo za splošni Somborjev indeks in uporabljali že vgrajene funkcije za delo z grafi.
+
+Najpomembnejše funkcije in objekti iz Sage, ki jih bomo potrebovali:
+\begin{itemize}
+	%\item \verb|graphs.trees(n)| – generiranje vseh dreves reda \( n \),
+	\item \verb|graphs.RandomTree(n)| – generiranje naključnih dreves, ki jih bomo
+	      uporabljali pri stohastičnem iskanju,
+	\item \verb|G.degree(v)| in \verb|G.degree_sequence()| – stopnje posameznih vozlišč in zaporedje stopenj,
+	\item \verb|G.maximum_degree()| – največja stopnja grafa
+	\item \verb|G.num_verts()| in \verb|G.num_edges()| – število vozlišč in povezav.
+    %\item \verb|G.edges(labels=False)| – seznam povezav, potreben pri računanju Somborjevega indeksa,
+	%\item \verb|G.copy()| in osnovne operacije za dodajanje/brisanje povezav – za lokalne spremembe dreves,
+	%\item \verb|G.plot()| oziroma \verb|G.show()| – za vizualizacijo tipičnih ekstremnih dreves.
+\end{itemize}
+\end{itemize}
+
+\section*{Viri}
+
+% spellcheck: disable
+\begin{itemize}
+\item Ahmad S., Farooq R., Das K. C.: General Sombor Index. Dostopno na: https://match.pmf.kg.ac.rs/electronic_versions/Match94/n3/match94n3_825-853.pdf
+\end{itemize}
+% spellcheck: enable
+
 
 \end{document}
+
 
