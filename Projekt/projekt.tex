@@ -36,4 +36,109 @@
 
 \newpage
 
+\section{Analiza grafov}
+
+V tem poglavju analiziramo obnašanje Somborjevega indeksa pri različnih vrednostih
+parametra $\alpha$ na grafih različnih velikosti. Celotna raziskava je omejena na
+drevesa, saj ta predstavljajo osnovni, a hkrati dovolj raznolik razred grafov, pri
+katerem je mogoč popoln pregled vseh neizomorfnih struktur. Z analizo želimo raziskati
+vpliv parametra $\alpha \in (0,1)$ na vrednost Somborjevega indeksa ter preučiti vpliv
+stopnje razvejanosti in števila vozlišč.
+
+\medskip
+
+V nadaljevanju najprej obravnavamo majhne grafe, kjer je zaradi omejenega števila
+vozlišč mogoč izčrpen računski pregled vseh neizomorfnih dreves, nato pa analizo
+razširimo še na večje grafe.
+
+
+\subsection{Majhni grafi}
+
+Pri analizi majhnih grafov, ki vsebujejo vse do 10 vozlišč, opazimo izrazit in stabilen trend
+v obnašanju \mbox{Somborjevega indeksa}. Za vse uporabljene vrednosti parametra
+$\alpha \in (0,1)$ se izkaže, da je vrednost Somborjevega indeksa največja pri grafih z
+največjo možno maksimalno stopnjo $\Delta$, glede na število vozlišč. To pomeni, da imajo
+vozlišča z največjim številom povezav oziroma z največjo stopnjo ključno vlogo pri velikosti
+indeksa, saj bistveno zaznamujejo celotno strukturo grafa.
+
+\medskip
+V numerični analizi majhnih grafov smo uporabili vrednosti parametra
+\[
+\alpha \in \{0.05, 0.45, 0.5, 0.55, 0.95\},
+\]
+ki ležijo znotraj intervala $(0,1)$. Izbrane vrednosti omogočajo opazovanje obnašanja
+indeksa v bližini mejnih vrednosti $0$ in $1$ ter v okolici srednje vrednosti $0.5$.
+Rezultati so pokazali, da večja kot je vrednost parametra $\alpha$, večja je tudi
+vrednost Somborjevega indeksa, ne glede na število vozlišč ali stopnjo razvejanosti grafa.
+
+\medskip
+
+Za vsako fiksno število vozlišč $n$ smo izvedli popoln računski pregled vseh neizomorfnih
+dreves. Za vsak graf smo najprej izračunali največjo stopnjo $\Delta$, nato pa drevesa
+razvrstili v razrede glede na to vrednost. Znotraj vsakega razreda smo izračunali
+Somborjev indeks, definiran z
+\[
+SO_\alpha(G) = \sum_{uv \in E(G)} (d_u^2 + d_v^2)^\alpha,
+\]
+kjer $d_u$ in $d_v$ označujeta stopnji krajišč roba $uv$.
+Na ta način smo za vsak $\Delta$ določili drevo, pri katerem Somborjev indeks doseže
+največjo vrednost. Poleg tega smo za vsako izbrano vrednost parametra $\alpha$
+določili tudi globalni maksimum Somborjevega indeksa med vsemi drevesi z $n$ vozlišči.
+
+\medskip
+
+Kot reprezentativen primer si oglejmo primer $n = 7$.
+Rezultati pokažejo, da Somborjev indeks za vse obravnavane vrednosti parametra $\alpha$
+monotono narašča z naraščanjem maksimalne stopnje $\Delta$.
+Globalni maksimum je v vseh primerih dosežen pri drevesu z $\Delta = 6$,
+kar ustreza zvezdastemu drevesu.
+To drevo vsebuje eno vozlišče stopnje $6$, ki je povezano z vsemi preostalimi vozlišči,
+kar povzroči največji možni prispevek k vrednosti indeksa.
+
+Opazimo tudi, da se z večanjem parametra $\alpha$ razlike med vrednostmi
+Somborjevega indeksa pri različnih vrednostih $\Delta$ še povečujejo.
+To pomeni, da večje vrednosti $\alpha$ dodatno poudarijo prispevek robov,
+ki povezujejo vozlišča z visokimi stopnjami, kar pride posebej do izraza
+pri zvezdastih drevesih.
+
+\medskip
+
+Na podlagi izčrpne računske analize majhnih grafov lahko sklenemo, da za vsako
+obravnavano število vozlišč $n \leq 10$ in za vsak parameter $\alpha \in (0,1)$
+$\alpha$-Somborjev indeks na razredu dreves doseže največjo vrednost pri grafih z
+največjo možno maksimalno stopnjo $\Delta = n-1$.
+Poleg tega se je pokazalo, da število povezav vpliva na absolutno vrednost indeksa,
+vendar ne spremeni njegovega kvalitativnega obnašanja glede na parameter $\alpha$.
+Ti rezultati predstavljajo trdno osnovo za nadaljnjo analizo večjih grafov.
+
+
+\newpage
+
+\subsection{Veliki grafi}
+
+Pri analizi velikih grafov, so bila opažanja podobna tistim, ki smo jih 
+naredili pri majhnih grafih, vendar z nekaj pomembnimi razlikami. Ugotovili smo, da so večji grafi imeli večjo 
+absolutno vrednost Somborjevega indeksa, vendar so razmerja med različnimi vrednostmi parametra $ \alpha \in (0, 1) $ 
+in stopnjo razvejanosti ostala precej podobna.
+
+Pri velikih grafih se je pokazalo, da je največja stopnja razvejanosti $ \Delta $, ki je tudi ključna za analizo 
+majhnih grafov, še vedno imela največji vpliv na vrednost Somborjevega indeksa. Ne glede na število vozlišč in 
+razvejanost grafa je bil indeks pri večjih vrednostih parametra $ \alpha $ večji. To potrjuje, da je vpliv parametra 
+$ \alpha $ dosleden tudi pri večjih in bolj zapletenih grafih.
+
+Poleg tega smo opazili, da večje število vozlišč in večja povezanost med njimi (večje število povezav) niso pomembno spremenili 
+relativnega obnašanja indeksa v različnih vrednostih $ \alpha $. To nakazuje, da so opažene lastnosti Somborjevega indeksa 
+stabilne, ne glede na velikost grafa. Kljub temu, da večji grafi vplivajo na absolutne vrednosti indeksa, so še vedno ohranjene 
+ključne značilnosti, ki smo jih opazili pri manjših grafih.
+
+\subsection{Povzetek ugotovitev}
+
+Na podlagi analize majhnih in velikih grafov smo ugotovili, da večja vrednost parametra $ \alpha \in (0, 1) $ 
+povzroči večji Somborjev indeks, ne glede na število vozlišč ali stopnjo razvejanosti v grafu. Ključen dejavnik pri 
+obnašanju indeksa je bila največja stopnja razvejanosti $ \Delta $, saj vozlišča z največ povezavami (največja stopnja) 
+povzročajo največji vpliv na vrednost indeksa. Uporaba različnih vrednosti parametra $ \alpha $, vključno z vrednostmi v 
+bližini 0, 0.5 in 1, je omogočila natančno analizo, kako te vrednosti vplivajo na rezultat in omogočile razumevanje obnašanja 
+indeksa v različnih okoljih.
+
+
 \end{document}
