@@ -36,6 +36,68 @@
 
 \newpage
 
+\section{Teoretični uvod}
+
+Naj bo \( G = (V, E)\) graf, sestavljen iz množice vozlišč \( V(G) \) in množice povezav \( E(G) \), kjer je
+\( | V(G) | = n \) število vozlišč in \( | E(G) | = m \) število povezav.
+Stopnja vozlišča \( d_G(v) \) predstavlja število povezav, ki so incidentne z vozliščem \( v \).
+Največjo stopnjo grafa \( G \) označimo z \( \Delta(G) \) oziroma, kadar ni dvoumnosti, le z \( \Delta \).
+
+\medskip
+
+V kemijski matematiki imajo pomembno vlogo topološki indeksi, ki temeljijo na stopnjah vozlišč. Gre za numerične
+invariante grafov, ki se uporabljajo pri modeliranju molekulskih struktur in napovedovanju njihovih lastnosti.
+Eden izmed takšnih indeksov je \emph{splošni Somborjev indeks}.
+
+\begin{definition}
+	Splošni Somborjev indeks \( SO_{\alpha}(G) \) grafa \( G \) definiramo kot
+	\[
+	SO_{\alpha}(G) = \sum_{\{u,v\} \in E(G)} \bigl(d_G(u)^2 + d_G(v)^2\bigr)^{\alpha},
+	\]
+	kjer je \( \alpha \in \mathbb{R} \) realen parameter.
+\end{definition}
+
+Za \( \alpha = 0 \) je \( SO_{0}(G) = |E(G)| \). Če je \( T \) drevo z \( n \) vozlišči, velja
+\( SO_{0}(T) = n - 1 \). V nadaljevanju se bomo osredotočili na primer
+\( \alpha \in (0,1) \).
+
+\section{Cilj projekta}
+
+V tem delu raziskave se omejimo na \emph{drevesa}, saj ta predstavljajo osnovni, a hkrati dovolj raznolik razred grafov,
+pri katerem je mogoč popoln pregled vseh neizomorfnih struktur za manjše vrednosti \( n \).
+
+\medskip
+
+Razred vseh dreves reda \( n \) z največjo stopnjo največ \( \Delta \) označimo z \( \tau(n,\Delta) \).
+Cilj projekta je identificirati drevesa z največjo vrednostjo splošnega Somborjevega indeksa znotraj razreda
+\( \tau(n,\Delta) \) za izbran parameter \( \alpha \in (0,1) \).
+
+Posebej nas zanima vpliv:
+\begin{itemize}
+	\item največje stopnje \( \Delta \),
+	\item razporeditve stopenj v drevesu,
+	\item izbire parametra \( \alpha \),
+\end{itemize}
+na vrednost indeksa in obliko ekstremnih dreves.
+
+\subsection{Vedenje indeksa pri različnih vrednostih parametra \( \alpha \)}
+
+Čeprav se v projektu osredotočamo na interval \( \alpha \in (0,1) \), nam vpogled v obnašanje indeksa pri drugih
+vrednostih parametra pomaga pri razumevanju ekstremnih struktur.
+
+\begin{itemize}
+	\item Za \( \alpha > 1 \) imajo večje stopnje vozlišč izrazit vpliv na vrednost indeksa, zato so ekstremna
+	drevesa tista z zelo neenakomerno porazdelitvijo stopenj, kot je zvezdno drevo.
+	\item Za \( \alpha < 0 \) velike stopnje indeks zmanjšujejo, zato so ugodna drevesa z enakomerno
+	porazdeljenimi stopnjami, na primer potna drevesa.
+\end{itemize}
+
+Za \( \alpha \in (0,1) \) je funkcija \( x \mapsto x^{\alpha} \) naraščajoča in konkavna, kar pomeni, da
+večje stopnje še vedno povečujejo vrednost indeksa, vendar z zmanjšanim prispevkom.
+Pričakujemo, da bodo ekstremna drevesa po strukturi nekje med zvezdnim in potnim drevesom.
+
+\newpage
+
 \section{Analiza grafov}
 
 V tem poglavju analiziramo obnašanje Somborjevega indeksa pri različnih vrednostih
@@ -51,8 +113,7 @@ V nadaljevanju najprej obravnavamo majhne grafe, kjer je zaradi omejenega števi
 vozlišč mogoč izčrpen računski pregled vseh neizomorfnih dreves, nato pa analizo
 razširimo še na večje grafe.
 
-
-\subsection{Majhni grafi}
+\subsection{Majhna drevesa}
 
 Pri analizi majhnih grafov, ki vsebujejo vse do 10 vozlišč, opazimo izrazit in stabilen trend
 v obnašanju \mbox{Somborjevega indeksa}. Za vse uporabljene vrednosti parametra
@@ -95,6 +156,8 @@ kar ustreza zvezdastemu drevesu.
 To drevo vsebuje eno vozlišče stopnje $6$, ki je povezano z vsemi preostalimi vozlišči,
 kar povzroči največji možni prispevek k vrednosti indeksa.
 
+\medskip
+
 Opazimo tudi, da se z večanjem parametra $\alpha$ razlike med vrednostmi
 Somborjevega indeksa pri različnih vrednostih $\Delta$ še povečujejo.
 To pomeni, da večje vrednosti $\alpha$ dodatno poudarijo prispevek robov,
@@ -106,15 +169,13 @@ pri zvezdastih drevesih.
 Na podlagi izčrpne računske analize majhnih grafov lahko sklenemo, da za vsako
 obravnavano število vozlišč $n \leq 10$ in za vsak parameter $\alpha \in (0,1)$
 $\alpha$-Somborjev indeks na razredu dreves doseže največjo vrednost pri grafih z
-največjo možno maksimalno stopnjo $\Delta = n-1$.
-Poleg tega se je pokazalo, da število povezav vpliva na absolutno vrednost indeksa,
-vendar ne spremeni njegovega kvalitativnega obnašanja glede na parameter $\alpha$.
-Ti rezultati predstavljajo trdno osnovo za nadaljnjo analizo večjih grafov.
-
+največjo možno maksimalno stopnjo $\Delta = n-1$. Z večanjem števila vozlišč se vrednost Somborjevega indeksa povečuje,
+vendar osnovni trendi, povezani z vplivom parametra $\alpha$ in strukture drevesa,
+ostajajo enaki. To omogoča smiselno primerjavo rezultatov med majhnimi in večjimi drevesi.
 
 \newpage
 
-\subsection{Veliki grafi}
+\subsection{Velika drevesa}
 
 Pri analizi velikih grafov se osnovne lastnosti Somborjevega indeksa v določenem smislu ohranijo, vendar se
 v primerjavi z majhnimi grafi pojavijo pomembne strukturne razlike. Absolutne vrednosti indeksa z naraščanjem
@@ -130,8 +191,8 @@ zmerno velikimi stopnjami. Posledično celotni prispevek vseh robov ni več opti
 
 \medskip
 
-Analiza kaže, da se maksimum Somborjevega indeksa pri velikih grafih doseže pri drevesih z vmesno stopnjo
-razvejanosti, kjer so stopnje vozlišč bolj enakomerno porazdeljene. Takšna struktura omogoča, da večje
+Analiza nakazuje, da se maksimum Somborjevega indeksa pri velikih grafih pogosto doseže pri drevesih
+z vmesno stopnjo razvejanosti. Takšna struktura omogoča, da večje
 število robov prispeva k vsoti z dovolj velikimi vrednostmi izraza
 \[
 (d_u^2 + d_v^2)^\alpha,
@@ -173,5 +234,11 @@ Uporaba različnih vrednosti parametra $\alpha$, vključno z vrednostmi v bliži
 celovito analizo vpliva parametra na obnašanje indeksa. S tem smo pokazali, da parameter $\alpha$ ne vpliva zgolj
 na absolutno velikost Somborjevega indeksa, temveč tudi na relativni pomen posameznih strukturnih lastnosti grafa,
 zlasti razporeditve stopenj vozlišč.
+
+\section*{Viri}
+
+\begin{itemize}
+\item Ahmad S., Farooq R., Das K. C.: \emph{General Sombor Index}. MATCH Commun. Math. Comput. Chem. 94 (2020), 825–853.
+\end{itemize}
 
 \end{document}
