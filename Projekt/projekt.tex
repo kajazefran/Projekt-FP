@@ -222,9 +222,9 @@ pri večjih drevesih pa smo zaradi računske zahtevnosti uporabili stohastično 
 
 \medskip
 
-\paragraph{Majhna drevesa.}
+\paragraph{Majhna drevesa}
 Za majhne vrednosti števila vozlišč (do $n = 10$) smo generirali vsa neizomorfna drevesa dane velikosti. 
-Za vsako drevo smo izračunali največjo stopnjo $\Delta$ ter vrednost $\alpha$-Somborjevega indeksa za izbrane vrednosti parametra
+Za vsako drevo smo izračunali največjo stopnjo $\Delta$ ter vrednost Somborjevega indeksa za izbrane vrednosti parametra
 \[
 \alpha \in \{0.05, 0.45, 0.5, 0.55, 0.95\}.
 \]
@@ -234,7 +234,7 @@ razvejanosti na vrednost indeksa.
 
 \medskip
 
-\paragraph{Velika drevesa.}
+\paragraph{Velika drevesa}
 Pri večjih vrednostih $n$ izčrpno generiranje vseh dreves ni več izvedljivo, zato smo uporabili stohastični pristop. 
 Pri tem smo uporabili **iste vrednosti parametra $\alpha$ kot pri majhnih drevesih**, da so rezultati med seboj primerljivi. 
 Algoritem začne z naključno izbranim drevesom in izvaja zaporedne lokalne spremembe strukture (npr.\ prevezave robov), pri 
@@ -265,6 +265,35 @@ največje stopnje in imajo primerljivo porazdelitev stopenj, kar potrjuje stabil
 
 Ker smo pri velikih drevesih uporabili iste vrednosti parametra $\alpha$ kot pri majhnih, lahko rezultate obeh pristopov 
 med seboj neposredno primerjamo in tako dobimo celovit vpogled v vpliv $\alpha$ in razvejanosti na Somborjev indeks.
+
+\subsection{Psevdokoda algoritma}
+
+Za boljši pregled nad izvedbo analize smo predstavili osnovno logiko algoritma v psevdokodi.
+
+\paragraph{Izčrpen pregled za majhna drevesa:}
+
+\begin{verbatim}
+Za n = 1 do 10:
+    Generiraj vsa neizomorfna drevesa T_n
+    Za vsako drevo T:
+        Izracunaj najvecjo stopnjo Delta(T)
+        Izracunaj SO_alpha(T) za alpha v {0.05, 0.45, 0.5, 0.55, 0.95}
+    Identificiraj drevesa z najvecjim SO_alpha
+\end{verbatim}
+
+\paragraph{Stohastični pristop za velika drevesa:}
+
+\begin{verbatim}
+Stohastični pristop za velika drevesa:
+Za dano n in alpha:
+    Za več začetnih dreves (n_starts):
+        Nastavi drevo T naključno
+        Ponovi n_steps:
+            Izberi lokalno spremembo T'
+            Če SO_alpha(T') > SO_alpha(T):
+                Sprejmi spremembo
+    Shrani drevo z največjim SO_alpha
+\end{verbatim}
 
 \subsection{Povzetek ugotovitev}
 
