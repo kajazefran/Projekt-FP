@@ -214,6 +214,58 @@ $\alpha$ se vrednost Somborjevega indeksa povečuje, vendar se hkrati okrepi pom
 vozlišč v celotnem grafu. To potrjuje, da pri velikih grafih vrednost indeksa ni določena zgolj z lokalnimi
 ekstremi, temveč predvsem z globalno strukturo drevesa.
 
+\subsection{Računski pristop in generiranje podatkov}
+
+Analiza Somborjevega indeksa je bila izvedena z uporabo dveh različnih računskih pristopov, odvisno od velikosti 
+obravnavanih dreves. Pri majhnih drevesih smo uporabili izčrpen, sistematičen pregled vseh neizomorfnih struktur, 
+pri večjih drevesih pa smo zaradi računske zahtevnosti uporabili stohastično iskanje.
+
+\medskip
+
+\paragraph{Majhna drevesa.}
+Za majhne vrednosti števila vozlišč (do $n = 10$) smo generirali vsa neizomorfna drevesa dane velikosti. 
+Za vsako drevo smo izračunali največjo stopnjo $\Delta$ ter vrednost $\alpha$-Somborjevega indeksa za izbrane vrednosti parametra
+\[
+\alpha \in \{0.05, 0.45, 0.5, 0.55, 0.95\}.
+\]
+Drevesa smo nato razvrstili glede na največjo stopnjo in identificirali tista, pri katerih Somborjev indeks 
+doseže maksimalno vrednost. Ta pristop omogoča natančno primerjavo vseh možnih struktur in jasen vpogled v vpliv 
+razvejanosti na vrednost indeksa.
+
+\medskip
+
+\paragraph{Velika drevesa.}
+Pri večjih vrednostih $n$ izčrpno generiranje vseh dreves ni več izvedljivo, zato smo uporabili stohastični pristop. 
+Pri tem smo uporabili **iste vrednosti parametra $\alpha$ kot pri majhnih drevesih**, da so rezultati med seboj primerljivi. 
+Algoritem začne z naključno izbranim drevesom in izvaja zaporedne lokalne spremembe strukture (npr.\ prevezave robov), pri 
+čemer se ohrani lastnost, da je graf drevo. Vsaka sprememba je sprejeta le, če poveča vrednost Somborjevega indeksa.
+
+\medskip
+
+Ker je število možnih vrednosti največje stopnje $\Delta$ pri velikih drevesih zelo veliko, smo stohastično preizkusili le 
+nekatere reprezentativne vrednosti. Na primer, za drevo z $n=80$ smo preizkusili
+\[
+\Delta \in \{15, 30, 40, 50, 65\}.
+\]
+
+\medskip
+
+Pri velikih drevesih se zvezdno drevo ne izkaže kot optimalna struktura. Razlog je v tem, da pri zelo veliki maksimalni 
+stopnji $\Delta$ večina robov povezuje vozlišče z zelo visoko stopnjo z listi, kar omeji skupni prispevek ostalih robov. 
+Drevesa z bolj uravnoteženo porazdelitvijo stopenj omogočajo, da večje število robov prispeva k vsoti v definiciji 
+Somborjevega indeksa, kar je za $\alpha \in (0,1)$ ugodneje.
+
+\medskip
+
+Rezultati stohastičnega iskanja se lahko med posameznimi zagoni nekoliko razlikujejo, kar je pričakovano zaradi 
+naključne narave algoritma. Kljub temu se dobljene optimalne strukture dosledno gibljejo okoli podobnih vrednosti 
+največje stopnje in imajo primerljivo porazdelitev stopenj, kar potrjuje stabilnost opaženih strukturnih lastnosti.
+
+\medskip
+
+Ker smo pri velikih drevesih uporabili iste vrednosti parametra $\alpha$ kot pri majhnih, lahko rezultate obeh pristopov 
+med seboj neposredno primerjamo in tako dobimo celovit vpogled v vpliv $\alpha$ in razvejanosti na Somborjev indeks.
+
 \subsection{Povzetek ugotovitev}
 
 Na podlagi analize majhnih in velikih grafov smo ugotovili, da z naraščanjem vrednosti parametra
@@ -234,7 +286,6 @@ Uporaba različnih vrednosti parametra $\alpha$, vključno z vrednostmi v bliži
 celovito analizo vpliva parametra na obnašanje indeksa. S tem smo pokazali, da parameter $\alpha$ ne vpliva zgolj
 na absolutno velikost Somborjevega indeksa, temveč tudi na relativni pomen posameznih strukturnih lastnosti grafa,
 zlasti razporeditve stopenj vozlišč.
-
 \newpage
 \section*{Viri}
 
