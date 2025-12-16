@@ -9,6 +9,7 @@
 \usepackage{dsfont}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{tikz}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
@@ -47,7 +48,7 @@ Največjo stopnjo grafa \( G \) označimo z \( \Delta(G) \) oziroma, kadar ni dv
 
 V kemijski matematiki imajo pomembno vlogo topološki indeksi, ki temeljijo na stopnjah vozlišč. Gre za numerične
 invariante grafov, ki se uporabljajo pri modeliranju molekulskih struktur in napovedovanju njihovih lastnosti.
-Eden izmed takšnih indeksov je \emph{splošni Somborjev indeks}.
+Eden izmed takšnih indeksov je \textbf{splošni Somborjev indeks}.
 
 \begin{definition}
 	Splošni Somborjev indeks \( SO_{\alpha}(G) \) grafa \( G \) definiramo kot
@@ -63,7 +64,7 @@ Za \( \alpha = 0 \) je \( SO_{0}(G) = |E(G)| \). Če je \( T \) drevo z \( n \) 
 
 \section{Cilj projekta}
 
-V tem delu raziskave se omejimo na \emph{drevesa}, saj ta predstavljajo osnovni, a hkrati dovolj raznolik razred grafov,
+V tem delu raziskave se omejimo na \textbf{drevesa}, saj ta predstavljajo osnovni, a hkrati dovolj raznolik razred grafov,
 pri katerem je mogoč popoln pregled vseh neizomorfnih struktur za manjše vrednosti \( n \).
 
 \medskip
@@ -71,6 +72,8 @@ pri katerem je mogoč popoln pregled vseh neizomorfnih struktur za manjše vredn
 Razred vseh dreves reda \( n \) z največjo stopnjo največ \( \Delta \) označimo z \( \tau(n,\Delta) \).
 Cilj projekta je identificirati drevesa z največjo vrednostjo splošnega Somborjevega indeksa znotraj razreda
 \( \tau(n,\Delta) \) za izbran parameter \( \alpha \in (0,1) \).
+
+\medskip
 
 Posebej nas zanima vpliv:
 \begin{itemize}
@@ -98,13 +101,11 @@ Pričakujemo, da bodo ekstremna drevesa po strukturi nekje med zvezdnim in potni
 
 \newpage
 
-\section{Analiza grafov}
+\section{Analiza dreves}
 
-V tem poglavju analiziramo obnašanje Somborjevega indeksa pri različnih vrednostih
-parametra $\alpha$ na grafih različnih velikosti. Celotna raziskava je omejena na
-drevesa, saj ta predstavljajo osnovni, a hkrati dovolj raznolik razred grafov, pri
-katerem je mogoč popoln pregled vseh neizomorfnih struktur. Z analizo želimo raziskati
-vpliv parametra $\alpha \in (0,1)$ na vrednost Somborjevega indeksa ter preučiti vpliv
+V tem poglavju analiziramo obnašanje splošnega Somborjevega indeksa pri različnih vrednostih
+parametra $\alpha$ na drevesih različnih velikosti. Z analizo želimo raziskati
+vpliv parametra $\alpha \in (0,1)$ na vrednost splošnega Somborjevega indeksa ter preučiti vpliv
 stopnje razvejanosti in števila vozlišč.
 
 \medskip
@@ -113,10 +114,39 @@ V nadaljevanju najprej obravnavamo majhne grafe, kjer je zaradi omejenega števi
 vozlišč mogoč izčrpen računski pregled vseh neizomorfnih dreves, nato pa analizo
 razširimo še na večje grafe.
 
+\subsection{Psevdokoda algoritma}
+
+Za boljši pregled nad izvedbo analize smo predstavili osnovno logiko algoritma v psevdokodi.
+
+\paragraph{Izčrpen pregled za majhna drevesa:}
+
+\begin{verbatim}
+Za n = 1 do 10:
+    Generiraj vsa neizomorfna drevesa T_n
+    Za vsako drevo T:
+        Izracunaj najvecjo stopnjo Delta(T)
+        Izracunaj SO_alpha(T) za alpha v {0.05, 0.45, 0.5, 0.55, 0.95}
+    Identificiraj drevesa z najvecjim SO_alpha
+\end{verbatim}
+
+\paragraph{Stohastični pristop za velika drevesa:}
+
+\begin{verbatim}
+Stohastični pristop za velika drevesa:
+Za dano n in alpha:
+    Za več začetnih dreves (n_starts):
+        Nastavi drevo T naključno
+        Ponovi n_steps:
+            Izberi lokalno spremembo T'
+            Če SO_alpha(T') > SO_alpha(T):
+                Sprejmi spremembo
+    Shrani drevo z največjim SO_alpha
+\end{verbatim}
+
 \subsection{Majhna drevesa}
 
 Pri analizi majhnih grafov, ki vsebujejo vse do 10 vozlišč, opazimo izrazit in stabilen trend
-v obnašanju \mbox{Somborjevega indeksa}. Za vse uporabljene vrednosti parametra
+v obnašanju \mbox{splošnega Somborjevega indeksa}. Za vse uporabljene vrednosti parametra
 $\alpha \in (0,1)$ se izkaže, da je vrednost Somborjevega indeksa največja pri grafih z
 največjo možno maksimalno stopnjo $\Delta$, glede na število vozlišč. To pomeni, da imajo
 vozlišča z največjim številom povezav oziroma z največjo stopnjo ključno vlogo pri velikosti
@@ -134,17 +164,21 @@ vrednost Somborjevega indeksa, ne glede na število vozlišč ali stopnjo razvej
 
 \medskip
 
-Za vsako fiksno število vozlišč $n$ smo izvedli popoln računski pregled vseh neizomorfnih
-dreves. Za vsak graf smo najprej izračunali največjo stopnjo $\Delta$, nato pa drevesa
-razvrstili v razrede glede na to vrednost. Znotraj vsakega razreda smo izračunali
-Somborjev indeks, definiran z
+Za vsako fiksno število vozlišč $n$ smo izvedli popoln računski pregled vseh
+neizomorfnih dreves. Za vsak graf smo najprej izračunali največjo stopnjo $\Delta$
+ter drevesa razvrstili v razrede glede na to vrednost. Znotraj vsakega razreda
+smo izračunali vrednost Somborjevega indeksa
 \[
 SO_\alpha(G) = \sum_{uv \in E(G)} (d_u^2 + d_v^2)^\alpha,
 \]
-kjer $d_u$ in $d_v$ označujeta stopnji krajišč roba $uv$.
-Na ta način smo za vsak $\Delta$ določili drevo, pri katerem Somborjev indeks doseže
-največjo vrednost. Poleg tega smo za vsako izbrano vrednost parametra $\alpha$
-določili tudi globalni maksimum Somborjevega indeksa med vsemi drevesi z $n$ vozlišči.
+kjer $d_u$ in $d_v$ označujeta stopnji krajišč roba $uv$, ter določili drevo, pri
+katerem indeks doseže največjo vrednost za dano $\Delta$.
+
+\medskip
+
+Poleg tega smo za vsako izbrano vrednost parametra $\alpha$ določili tudi globalni
+maksimum Somborjevega indeksa med vsemi drevesi z $n$ vozlišči ter identificirali
+vrednost največje stopnje $\Delta$, pri kateri se ta maksimum pojavi.
 
 \medskip
 
@@ -164,6 +198,52 @@ To pomeni, da večje vrednosti $\alpha$ dodatno poudarijo prispevek robov,
 ki povezujejo vozlišča z visokimi stopnjami, kar pride posebej do izraza
 pri zvezdastih drevesih.
 
+\begin{table}[H]
+\centering
+\begin{tabular}{c c}
+\hline
+$\alpha$ & $SO_\alpha$ (zvezdno drevo, $n=7$) \\
+\hline
+0.05 & 7.214 \\
+0.45 & 30.746 \\
+0.50 & 36.496 \\
+0.55 & 43.287 \\
+0.95 & 185.86 \\
+\hline
+\end{tabular}
+\caption{Vrednosti Somborjevega indeksa za zvezdno drevo reda $n=7$}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    every node/.style={circle, draw, fill=black, inner sep=1.5pt},
+    scale=1.2
+]
+
+% centralno vozlišče
+\node (c) at (0,0) {};
+
+% listi
+\node (v1) at (0:2) {};
+\node (v2) at (60:2) {};
+\node (v3) at (120:2) {};
+\node (v4) at (180:2) {};
+\node (v5) at (240:2) {};
+\node (v6) at (300:2) {};
+
+% povezave
+\draw (c) -- (v1);
+\draw (c) -- (v2);
+\draw (c) -- (v3);
+\draw (c) -- (v4);
+\draw (c) -- (v5);
+\draw (c) -- (v6);
+
+\end{tikzpicture}
+\caption{Zvezdno drevo reda $n=7$ z maksimalno stopnjo $\Delta = 6$}
+\end{figure}
+
 \medskip
 
 Na podlagi izčrpne računske analize majhnih grafov lahko sklenemo, da za vsako
@@ -172,8 +252,6 @@ $\alpha$-Somborjev indeks na razredu dreves doseže največjo vrednost pri grafi
 največjo možno maksimalno stopnjo $\Delta = n-1$. Z večanjem števila vozlišč se vrednost Somborjevega indeksa povečuje,
 vendar osnovni trendi, povezani z vplivom parametra $\alpha$ in strukture drevesa,
 ostajajo enaki. To omogoča smiselno primerjavo rezultatov med majhnimi in večjimi drevesi.
-
-\newpage
 
 \subsection{Velika drevesa}
 
@@ -216,7 +294,7 @@ ekstremi, temveč predvsem z globalno strukturo drevesa.
 
 \subsection{Računski pristop in generiranje podatkov}
 
-Analiza Somborjevega indeksa je bila izvedena z uporabo dveh različnih računskih pristopov, odvisno od velikosti 
+Analiza splošnega Somborjevega indeksa je bila izvedena z uporabo dveh različnih računskih pristopov, odvisno od velikosti 
 obravnavanih dreves. Pri majhnih drevesih smo uporabili izčrpen, sistematičen pregled vseh neizomorfnih struktur, 
 pri večjih drevesih pa smo zaradi računske zahtevnosti uporabili stohastično iskanje.
 
@@ -236,9 +314,14 @@ razvejanosti na vrednost indeksa.
 
 \paragraph{Velika drevesa}
 Pri večjih vrednostih $n$ izčrpno generiranje vseh dreves ni več izvedljivo, zato smo uporabili stohastični pristop. 
-Pri tem smo uporabili **iste vrednosti parametra $\alpha$ kot pri majhnih drevesih**, da so rezultati med seboj primerljivi. 
-Algoritem začne z naključno izbranim drevesom in izvaja zaporedne lokalne spremembe strukture (npr.\ prevezave robov), pri 
-čemer se ohrani lastnost, da je graf drevo. Vsaka sprememba je sprejeta le, če poveča vrednost Somborjevega indeksa.
+Pri tem smo uporabili iste vrednosti parametra $\alpha$ kot pri majhnih drevesih, da so rezultati med seboj primerljivi. 
+Algoritem začne z naključno izbranim drevesom in nato izvaja zaporedne lokalne
+transformacije, ki so omejene na premikanje listov.
+Vsaka transformacija sestoji iz odstranitve roba, ki povezuje list z njegovim
+edinim sosedom, ter ponovne priključitve tega lista na drugo vozlišče.
+Takšna operacija ohranja povezanost in acikličnost grafa, zato v vsakem koraku
+ostanemo znotraj razreda dreves.
+ Vsaka sprememba je sprejeta le, če poveča vrednost Somborjevega indeksa.
 
 \medskip
 
@@ -266,35 +349,6 @@ največje stopnje in imajo primerljivo porazdelitev stopenj, kar potrjuje stabil
 Ker smo pri velikih drevesih uporabili iste vrednosti parametra $\alpha$ kot pri majhnih, lahko rezultate obeh pristopov 
 med seboj neposredno primerjamo in tako dobimo celovit vpogled v vpliv $\alpha$ in razvejanosti na Somborjev indeks.
 
-\subsection{Psevdokoda algoritma}
-
-Za boljši pregled nad izvedbo analize smo predstavili osnovno logiko algoritma v psevdokodi.
-
-\paragraph{Izčrpen pregled za majhna drevesa:}
-
-\begin{verbatim}
-Za n = 1 do 10:
-    Generiraj vsa neizomorfna drevesa T_n
-    Za vsako drevo T:
-        Izracunaj najvecjo stopnjo Delta(T)
-        Izracunaj SO_alpha(T) za alpha v {0.05, 0.45, 0.5, 0.55, 0.95}
-    Identificiraj drevesa z najvecjim SO_alpha
-\end{verbatim}
-
-\paragraph{Stohastični pristop za velika drevesa:}
-
-\begin{verbatim}
-Stohastični pristop za velika drevesa:
-Za dano n in alpha:
-    Za več začetnih dreves (n_starts):
-        Nastavi drevo T naključno
-        Ponovi n_steps:
-            Izberi lokalno spremembo T'
-            Če SO_alpha(T') > SO_alpha(T):
-                Sprejmi spremembo
-    Shrani drevo z največjim SO_alpha
-\end{verbatim}
-
 \subsection{Povzetek ugotovitev}
 
 Na podlagi analize majhnih in velikih grafov smo ugotovili, da z naraščanjem vrednosti parametra
@@ -315,7 +369,7 @@ Uporaba različnih vrednosti parametra $\alpha$, vključno z vrednostmi v bliži
 celovito analizo vpliva parametra na obnašanje indeksa. S tem smo pokazali, da parameter $\alpha$ ne vpliva zgolj
 na absolutno velikost Somborjevega indeksa, temveč tudi na relativni pomen posameznih strukturnih lastnosti grafa,
 zlasti razporeditve stopenj vozlišč.
-\newpage
+
 \section*{Viri}
 
 \begin{itemize}
