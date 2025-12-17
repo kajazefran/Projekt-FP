@@ -40,9 +40,12 @@
 \section{Teoretični uvod}
 
 Naj bo \( G = (V, E)\) graf, sestavljen iz množice vozlišč \( V(G) \) in množice povezav \( E(G) \), kjer je
-\( | V(G) | = n \) število vozlišč in \( | E(G) | = m \) število povezav.
+\( | V(G) | = n \) število vozlišč in \( | E(G) | = m \) število povezav. 
 Stopnja vozlišča \( d_G(v) \) predstavlja število povezav, ki so incidentne z vozliščem \( v \).
 Največjo stopnjo grafa \( G \) označimo z \( \Delta(G) \) oziroma, kadar ni dvoumnosti, le z \( \Delta \).
+
+\medskip
+Graf reda \( n \), ki ne vsebuje ciklov, imenujemo drevo. Razred vseh dreves reda \( n \) z največjo stopnjo največ \( \Delta \) označimo z \( \tau(n,\Delta) \).
 
 \medskip
 
@@ -69,7 +72,6 @@ pri katerem je mogoč popoln pregled vseh neizomorfnih struktur za manjše vredn
 
 \medskip
 
-Razred vseh dreves reda \( n \) z največjo stopnjo največ \( \Delta \) označimo z \( \tau(n,\Delta) \).
 Cilj projekta je identificirati drevesa z največjo vrednostjo splošnega Somborjevega indeksa znotraj razreda
 \( \tau(n,\Delta) \) za izbran parameter \( \alpha \in (0,1) \).
 
@@ -97,7 +99,6 @@ vrednostih parametra pomaga pri razumevanju ekstremnih struktur.
 
 Za \( \alpha \in (0,1) \) je funkcija \( x \mapsto x^{\alpha} \) naraščajoča in konkavna, kar pomeni, da
 večje stopnje še vedno povečujejo vrednost indeksa, vendar z zmanjšanim prispevkom.
-Pričakujemo, da bodo ekstremna drevesa po strukturi nekje med zvezdnim in potnim drevesom.
 
 \newpage
 
@@ -209,11 +210,11 @@ $\alpha$
 & $\Delta=5$ 
 & $\Delta=6$ \\
 \hline
-0.05 & 5.49 & 5.64 & 5.70 & 5.88 & 6.00 \\
-0.45 & 9.88 & 14.23 & 17.92 & 21.87 & 30.47 \\
-0.50 & 10.64 & 15.64 & 19.70 & 24.29 & 36.50 \\
-0.55 & 11.46 & 17.22 & 21.79 & 27.02 & 43.72 \\
-0.95 & 17.62 & 44.78 & 79.44 & 121.03 & 185.33 \\
+0.05 & 6.61 & 6.76 & 6.87 & 6.98 & 7.19 \\
+0.45 & 14.32 & 17.62 & 20.63 & 23.94 & 30.47 \\
+0.50 & 15.79 & 19.86 & 23.69 & 28.02 & 36.50 \\
+0.55 & 17.40 & 22.39 & 27.22 & 32.80 & 43.72 \\
+0.95 & 38.07 & 58.52 & 83.37 & 117.49 & 185.33 \\
 \hline
 \end{tabular}
 \caption{Maksimalne vrednosti splošnega Somborjevega indeksa $SO_\alpha$ za drevesa reda $n=7$ in vse možne maksimalne stopnje $\Delta$.}
@@ -254,11 +255,12 @@ $\alpha$
 
 Na podlagi izčrpne računske analize majhnih grafov lahko sklenemo, da za vsako
 obravnavano število vozlišč $n \leq 10$ in za vsak parameter $\alpha \in (0,1)$
-$\alpha$-Somborjev indeks na razredu dreves doseže največjo vrednost pri grafih z
+Somborjev indeks na razredu dreves doseže največjo vrednost pri grafih z
 največjo možno maksimalno stopnjo $\Delta = n-1$. Z večanjem števila vozlišč se vrednost Somborjevega indeksa povečuje,
 vendar osnovni trendi, povezani z vplivom parametra $\alpha$ in strukture drevesa,
 ostajajo enaki. To omogoča smiselno primerjavo rezultatov med majhnimi in večjimi drevesi.
 
+\newpage
 \subsection{Velika drevesa}
 
 Pri analizi velikih grafov se osnovne lastnosti Somborjevega indeksa v določenem smislu ohranijo, vendar se
@@ -371,7 +373,7 @@ odvisen zgolj od lokalnih ekstremov, temveč predvsem od globalne porazdelitve s
 
 \medskip
 
-Uporaba različnih vrednosti parametra $\alpha$, vključno z vrednostmi v bližini $0$, $0{,}5$ in $1$, je omogočila
+Uporaba različnih vrednosti parametra $\alpha$, vključno z vrednostmi v bližini $0$, $0{.}5$ in $1$, je omogočila
 celovito analizo vpliva parametra na obnašanje indeksa. S tem smo pokazali, da parameter $\alpha$ ne vpliva zgolj
 na absolutno velikost Somborjevega indeksa, temveč tudi na relativni pomen posameznih strukturnih lastnosti grafa,
 zlasti razporeditve stopenj vozlišč.
