@@ -291,28 +291,11 @@ $\Delta = n-1$.
 
 \medskip
 
-Kljub temu pa se v primerjavi z majhnimi drevesi pojavijo pomembne strukturne razlike pri drevesih z \mbox{omejeno} največjo stopnjo
-$\Delta$. Medtem ko je pri majhnih grafih optimalna struktura za dano $\Delta$ \mbox{pogosto} blizu \mbox{zvezdni} ali močno centralizirani obliki, 
-se pri večjih drevesih optimalne konfiguracije porazdelijo na več \mbox{vozlišč} z visoko stopnjo. Empirični rezultati kažejo, da se pri 
-naraščanju $\Delta$ število vozlišč, ki \mbox{dosegajo} \mbox{maksimalno} \mbox{stopnjo}, postopoma zmanjšuje, hkrati pa se pojavljajo vozlišča z drugo 
-največjo stopnjo, ki \mbox{pomembno} \mbox{prispevajo} k skupni vrednosti indeksa.
-
-\medskip
-
-Ta pojav je povezan z naravo izraza
-\[
-\left( d_u^2 + d_v^2 \right)^{\alpha},
-\]
-kjer za $\alpha \in (0,1)$ posamezni zelo veliki prispevki ne prevladajo povsem nad večjim številom zmerno velikih prispevkov. 
-Posledično so pri fiksni omejitvi $\Delta$ optimalna drevesa pogosto sestavljena iz več delno razvejanih vozlišč, namesto 
-enega samega izrazito dominantnega vozlišča.
-
-\medskip
 Analiza za večje vrednosti $n$ na podlagi stohastičnega iskanja kaže, da se z naraščanjem največje dovoljene stopnje
 $\Delta$ vrednost \mbox{Somborjevega indeksa} monotono povečuje. Pri tem se struktura dreves, ki dosegajo največje
 vrednosti indeksa, postopno spreminja: za manjše vrednosti $\Delta$ so optimalna drevesa bolj razpršena, z več vozlišči
 zmernih stopenj, medtem ko se z naraščanjem $\Delta$ optimalna struktura vse bolj približuje drevesu z enim samim
-dominantnim vozliščem. V primeru $\Delta = n-1$ je globalni maksimum Somborjevega indeksa dosežen pri zvezdnem drevesu.
+dominantnim vozliščem.
 
 \medskip
 
@@ -322,8 +305,7 @@ $\Delta$ drevesa z bolj uravnoteženo porazdelitvijo stopenj relativno visoke vr
 vrednosti, dosežene pri ekstremno razvejanih strukturah. To kaže, da je vpliv največje stopnje \mbox{razvejanosti} ključen
 tudi pri velikih grafih, pri čemer zvezdno drevo ostaja globalno optimalna struktura.
 
-\medskip
-
+\subsubsection{Primer za $n=60$}
 Kot reprezentativen primer si oglejmo primer $n = 60$.
 Rezultati, prikazani v Tabeli 2, kažejo, da Somborjev indeks za vse obravnavane vrednosti parametra $\alpha$
 monotono narašča z naraščanjem maksimalne stopnje $\Delta$.
@@ -405,11 +387,9 @@ za drevesa reda $n=60$ pri različnih vrednostih parametra $\alpha$
 in maksimalne stopnje $\Delta$.}
 \end{table}
 
-\medskip
-
 Kot pri manjših grafih je globalni maksimum Somborjevega indeksa dosežen pri $\Delta = n-1$, 
 kar ustreza zvezdnemu drevesu z enim dominantnim vozliščem. To potrjuje, da tudi pri večjih drevesih
-ekstremno razvejane strukture ostajajo optimalne glede na $\alpha$-Somborjev indeks.
+ekstremno razvejane strukture ostajajo optimalne glede na Somborjev indeks.
 
 \medskip
 
@@ -431,16 +411,9 @@ kot stabilna tako pri majhnih kot pri velikih drevesih.
 \medskip
 
 Vpliv največje stopnje razvejanosti $\Delta$ se pri tem izkaže kot ključen. Pri majhnih grafih je globalni \mbox{maksimum} Somborjevega indeksa dosežen pri drevesih
-z največjo možno stopnjo razvejanosti, saj vozlišče z največ povezavami prispeva največji delež k vsoti v
+z največjo možno stopnjo razvejanosti, saj vozlišče z največ \mbox{povezavami} prispeva največji delež k vsoti v
 definiciji indeksa. Analiza velikih grafov pokaže, da ta lastnost ostaja ohranjena tudi za večje vrednosti $n$,
 saj zvezdno drevo z $\Delta = n-1$ še vedno dosega največjo možno vrednost indeksa.
-
-\medskip
-
-Kljub temu pa rezultati pokažejo pomembne razlike v strukturi optimalnih dreves pri omejeni največji stopnji
-$\Delta$. Pri večjih grafih se optimalne konfiguracije za fiksno $\Delta$ porazdelijo na več vozlišč z visoko
-stopnjo, kar kaže, da vrednost indeksa ni določena zgolj z enim lokalnim ekstremom, temveč z globalno
-porazdelitvijo stopenj v grafu.
 
 \medskip
 
