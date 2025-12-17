@@ -146,7 +146,7 @@ Pri večjih vrednostih $n$ izčrpno generiranje vseh dreves ni več izvedljivo, 
 Pri tem smo uporabili iste vrednosti parametra $\alpha$ kot pri majhnih drevesih, da so rezultati med seboj primerljivi. 
 Algoritem začne z naključno izbranim začetnim drevesom, ki zadošča danim omejitvam (število vozlišč in največja stopnja), 
 ter nato drevo postopno izboljšuje z lokalnimi spremembami (izbrali smo list - vozlišče stopnje 1, ta
-list priključili na drugo vozlišče) katerega stopnja po priključitvi ne preseže $\Delta$. Pri vsakem koraku se iz trenutnega 
+list priključili na drugo vozlišče katerega stopnja po priključitvi ne preseže $\Delta$). Pri vsakem koraku se iz trenutnega 
 drevesa generira novo drevo z majhno strukturno spremembo, pri čemer se sprememba sprejme le, če ne zmanjša vrednosti Somborjevega indeksa.
 
 \medskip
@@ -230,6 +230,7 @@ vrednost največje stopnje $\Delta$, pri kateri se ta maksimum pojavi.
 \medskip
 
 \subsubsection{Primer za $n = 7$}
+
 Kot reprezentativen primer si oglejmo primer $n = 7$.
 Rezultati pokažejo, da Somborjev indeks za vse \mbox{obravnavane} vrednosti parametra $\alpha$
 monotono narašča z naraščanjem maksimalne stopnje $\Delta$.
@@ -273,8 +274,6 @@ $\alpha$
 \end{tabular}
 \caption{Maksimalne vrednosti splošnega Somborjevega indeksa $SO_\alpha$ za drevesa reda $n=7$ in vse možne maksimalne stopnje $\Delta$.}
 \end{table}
-
-\medskip
 
 Na podlagi izčrpne računske analize majhnih grafov lahko sklenemo, da za vsako
 obravnavano število vozlišč $n \leq 10$ in za vsak parameter $\alpha \in (0,1)$
