@@ -144,8 +144,10 @@ razvejanosti na vrednost indeksa.
 \paragraph{Velika drevesa}
 Pri večjih vrednostih $n$ izčrpno generiranje vseh dreves ni več izvedljivo, zato smo uporabili stohastični pristop. 
 Pri tem smo uporabili iste vrednosti parametra $\alpha$ kot pri majhnih drevesih, da so rezultati med seboj primerljivi. 
-Algoritem začne z naključno izbranim začetnim drevesom, ki zadošča danim omejitvam (število vozlišč in največja stopnja), ter nato drevo postopno izboljšuje z lokalnimi spremembami (izbrali smo list - vozlišče stopnje 1, ta
-list priključili na drugo vozlišče) katerega stopnja po priključitvi ne preseže $\Delta$. Pri vsakem koraku se iz trenutnega drevesa generira novo drevo z majhno strukturno spremembo, pri čemer se sprememba sprejme le, če ne zmanjša vrednosti Somborjevega indeksa.
+Algoritem začne z naključno izbranim začetnim drevesom, ki zadošča danim omejitvam (število vozlišč in največja stopnja), 
+ter nato drevo postopno izboljšuje z lokalnimi spremembami (izbrali smo list - vozlišče stopnje 1, ta
+list priključili na drugo vozlišče) katerega stopnja po priključitvi ne preseže $\Delta$. Pri vsakem koraku se iz trenutnega 
+drevesa generira novo drevo z majhno strukturno spremembo, pri čemer se sprememba sprejme le, če ne zmanjša vrednosti Somborjevega indeksa.
 
 \medskip
 
@@ -306,18 +308,19 @@ Posledično so pri fiksni omejitvi $\Delta$ optimalna drevesa pogosto sestavljen
 enega samega izrazito dominantnega vozlišča.
 
 \medskip
-Analiza za večje vrednosti $n$ tako kaže, da se s povečevanjem največje dovoljene stopnje $\Delta$ vrednost \mbox{Somborjevega} 
-indeksa monotono povečuje, vendar se struktura optimalnih dreves postopno spreminja: od dreves z večjim številom vozlišč maksimalne 
-stopnje pri manjših $\Delta$ do struktur z enim samim dominantnim \mbox{vozliščem} v primeru $\Delta = n-1$. Ta prehod potrjuje, da je pri 
-velikih drevesih vpliv porazdelitve stopenj vozlišč \mbox{ključen} za \mbox{razumevanje} obnašanja splošnega Somborjevega indeksa, čeprav globalni 
-maksimum ostaja dosežen pri \mbox{ekstremno} razvejanih strukturah.
+Analiza za večje vrednosti $n$ na podlagi stohastičnega iskanja kaže, da se z naraščanjem največje dovoljene stopnje
+$\Delta$ vrednost \mbox{Somborjevega indeksa} monotono povečuje. Pri tem se struktura dreves, ki dosegajo največje
+vrednosti indeksa, postopno spreminja: za manjše vrednosti $\Delta$ so optimalna drevesa bolj razpršena, z več vozlišči
+zmernih stopenj, medtem ko se z naraščanjem $\Delta$ optimalna struktura vse bolj približuje drevesu z enim samim
+dominantnim vozliščem. V primeru $\Delta = n-1$ je globalni maksimum Somborjevega indeksa dosežen pri zvezdnem drevesu.
 
 \medskip
 
-Pri velikih drevesih se zvezdno drevo ne izkaže kot optimalna struktura. Razlog je v tem, da pri zelo veliki maksimalni 
-stopnji $\Delta$ večina robov povezuje vozlišče z zelo visoko stopnjo z listi, kar omeji skupni prispevek ostalih robov. 
-Drevesa z bolj uravnoteženo porazdelitvijo stopenj omogočajo, da večje število robov prispeva k vsoti v definiciji 
-Somborjevega indeksa, kar je za $\alpha \in (0,1)$ ugodneje.
+Rezultati stohastičnega iskanja tako potrjujejo, da tudi pri velikih drevesih zvezdno drevo doseže največjo vrednost
+Somborjevega indeksa za obravnavane vrednosti parametra $\alpha \in (0,1)$. Čeprav imajo pri vmesnih vrednostih
+$\Delta$ drevesa z bolj uravnoteženo porazdelitvijo stopenj relativno visoke vrednosti indeksa, te ne presežejo
+vrednosti, dosežene pri ekstremno razvejanih strukturah. To kaže, da je vpliv največje stopnje razvejanosti ključen
+tudi pri velikih grafih, pri čemer zvezdno drevo ostaja globalno optimalna struktura.
 
 \medskip
 
@@ -333,7 +336,8 @@ med seboj neposredno primerjamo in tako dobimo celovit vpogled v vpliv $\alpha$ 
 \subsection{Povzetek ugotovitev}
 
 Na podlagi analize majhnih in velikih grafov smo ugotovili, da z naraščanjem vrednosti parametra
-$\alpha \in (0,1)$ vrednost splošnega Somborjevega indeksa monotono narašča, ne glede na število vozlišč. Ta lastnost se izkaže kot stabilna tako pri majhnih kot pri velikih drevesih.
+$\alpha \in (0,1)$ vrednost splošnega Somborjevega indeksa monotono narašča, ne glede na število vozlišč. Ta lastnost se izkaže 
+kot stabilna tako pri majhnih kot pri velikih drevesih.
 
 \medskip
 
