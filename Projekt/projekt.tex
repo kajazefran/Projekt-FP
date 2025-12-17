@@ -325,16 +325,16 @@ tudi pri velikih grafih, pri čemer zvezdno drevo ostaja globalno optimalna stru
 
 \medskip
 
-Rezultati stohastičnega iskanja se lahko med posameznimi zagoni nekoliko razlikujejo, kar je pričakovano zaradi 
-naključne narave algoritma. Kljub temu se dobljene optimalne strukture dosledno gibljejo okoli podobnih vrednosti 
-največje stopnje in imajo primerljivo porazdelitev stopenj, kar potrjuje stabilnost opaženih strukturnih lastnosti.
+Kot reprezentativen primer si oglejmo primer $n = 60$.
+Rezultati, prikazani v Tabeli 2, kažejo, da Somborjev indeks za vse obravnavane vrednosti parametra $\alpha$
+monotono narašča z naraščanjem maksimalne stopnje $\Delta$.
 
 \medskip
 
-Ker smo pri velikih drevesih uporabili iste vrednosti parametra $\alpha$ kot pri majhnih, lahko rezultate obeh \mbox{pristopov}
-med seboj neposredno primerjamo in tako dobimo celovit vpogled v vpliv $\alpha$ in razvejanosti na \mbox{Somborjev} indeks.
+Opazimo, da se z večanjem parametra $\alpha$ razlike med vrednostmi Somborjevega indeksa pri različnih $\Delta$ še povečujejo.
+To pomeni, da večje vrednosti $\alpha$ dodatno poudarijo prispevek robov, ki povezujejo vozlišča z visokimi stopnjami,
+kar je posebej izrazito pri ekstremno razvejanih drevesih, kot je zvezdno drevo.
 
-\subsubsection{Primer za $n = 60$}
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.15}
@@ -405,6 +405,23 @@ $\alpha$
 za drevesa reda $n=60$ pri različnih vrednostih parametra $\alpha$
 in maksimalne stopnje $\Delta$.}
 \end{table}
+
+\medskip
+
+Kot pri manjših grafih je globalni maksimum Somborjevega indeksa dosežen pri $\Delta = n-1$, 
+kar ustreza zvezdnemu drevesu z enim dominantnim vozliščem. To potrjuje, da tudi pri večjih drevesih
+ekstremno razvejane strukture ostajajo optimalne glede na $\alpha$-Somborjev indeks.
+
+\medskip
+
+Rezultati stohastičnega iskanja se lahko med posameznimi zagoni nekoliko razlikujejo, kar je pričakovano zaradi 
+naključne narave algoritma. Kljub temu se dobljene optimalne strukture dosledno gibljejo okoli podobnih vrednosti 
+največje stopnje in imajo primerljivo porazdelitev stopenj, kar potrjuje stabilnost opaženih strukturnih lastnosti.
+
+\medskip
+
+Ker smo pri velikih drevesih uporabili iste vrednosti parametra $\alpha$ kot pri majhnih, lahko rezultate obeh \mbox{pristopov}
+med seboj neposredno primerjamo in tako dobimo celovit vpogled v vpliv $\alpha$ in razvejanosti na \mbox{Somborjev} indeks.
 
 \subsection{Povzetek ugotovitev}
 
