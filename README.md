@@ -12,3 +12,6 @@ na nekaj primerih naključnih grafov.
 - **Python / Jupyter Notebook** – za implementacijo in vizualizacijo rezultatov  
 - **VS Code + WSL** – razvojno okolje
 - **TeX** - za pisanje poročila
+
+## Navodila za uporabo:
+Poročilo se nahaja v mapi Projekt kot *projekt.pdf*, koda pa v datoteki *naloga.ipynb*.
