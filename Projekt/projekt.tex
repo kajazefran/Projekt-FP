@@ -48,6 +48,11 @@ Največjo stopnjo grafa \( G \) označimo z \( \Delta(G) \) oziroma, kadar ni dv
 
 \medskip
 
+Graf reda \( n \), ki ne vsebuje ciklov, imenujemo drevo z \( n \) vozlišči.
+Razred vseh dreves reda \( n \) z največjo stopnjo največ \( \Delta \) označimo z \( \tau(n,\Delta) \).
+
+\medskip
+
 V kemijski matematiki imajo pomembno vlogo topološki indeksi, ki temeljijo na stopnjah vozlišč. Gre za numerične
 invariante grafov, ki se uporabljajo pri modeliranju molekulskih struktur in napovedovanju njihovih lastnosti.
 Eden izmed takšnih indeksov je \textbf{splošni Somborjev indeks}.
@@ -71,7 +76,6 @@ pri katerem je mogoč popoln pregled vseh neizomorfnih struktur za manjše vredn
 
 \medskip
 
-Razred vseh dreves reda \( n \) z največjo stopnjo največ \( \Delta \) označimo z \( \tau(n,\Delta) \).
 Cilj projekta je identificirati drevesa z največjo vrednostjo splošnega Somborjevega indeksa znotraj razreda
 \( \tau(n,\Delta) \) za izbran parameter \( \alpha \in (0,1) \).
 
@@ -231,13 +235,6 @@ kar ustreza zvezdastemu drevesu.
 To drevo vsebuje eno vozlišče stopnje $6$, ki je povezano z vsemi preostalimi vozlišči,
 kar povzroči največji možni prispevek k vrednosti indeksa.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{zvezda7.png}
-\caption{Zvezdno drevo reda $n=7$ z maksimalno stopnjo $\Delta = 6$.}
-\label{fig:zvezda7}
-\end{figure}
-
 \medskip
 
 Opazimo tudi, da se z večanjem parametra $\alpha$ razlike med vrednostmi
@@ -245,6 +242,13 @@ Somborjevega indeksa pri različnih vrednostih $\Delta$ še povečujejo.
 To pomeni, da večje vrednosti $\alpha$ dodatno poudarijo prispevek robov,
 ki povezujejo vozlišča z visokimi stopnjami, kar pride posebej do izraza
 pri zvezdastih drevesih.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{slike/zvezda7.png}
+\caption{Zvezdno drevo reda $n=7$ z maksimalno stopnjo $\Delta = 6$.}
+\label{fig:zvezda7}
+\end{figure}
 
 \begin{table}[H]
 \centering
@@ -315,6 +319,8 @@ ostajajo enaki. To omogoča smiselno primerjavo rezultatov med majhnimi in večj
 Pri analizi dreves z večjim številom vozlišč se osnovne lastnosti splošnega Somborjevega indeksa v veliki meri ohranijo. Absolutne vrednosti indeksa z naraščanjem števila vozlišč pričakovano naraščajo, pri čemer se za vse obravnavane vrednosti parametra
 $\alpha \in (0,1)$ globalni maksimum še vedno doseže pri drevesih z največjo možno stopnjo, torej pri zvezdnem drevesu z
 $\Delta = n-1$.
+
+\medskip
 
 Kljub temu pa se v primerjavi z majhnimi drevesi pojavijo pomembne strukturne razlike pri drevesih z omejeno največjo stopnjo
 $\Delta$. Medtem ko je pri majhnih grafih optimalna struktura za dano $\Delta$ pogosto blizu zvezdni ali močno centralizirani obliki, se pri večjih drevesih optimalne konfiguracije porazdelijo na več vozlišč z visoko stopnjo. Empirični rezultati kažejo, da se pri naraščanju $\Delta$ število vozlišč, ki dosegajo maksimalno stopnjo, postopoma zmanjšuje, hkrati pa se pojavljajo vozlišča z drugo največjo stopnjo, ki pomembno prispevajo k skupni vrednosti indeksa.
