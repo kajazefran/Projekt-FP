@@ -13,6 +13,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{comment}
+\usepackage{framed}
 
 \graphicspath{{../slike/}}
 \geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm}
@@ -158,13 +159,15 @@ $
 \Delta \in \{2, 3, 4, 5, 10, 15, 30, 59\}.
 $
 
-\newpage
+
 \subsection{Psevdokoda algoritma}
 
 Za boljši pregled nad izvedbo analize smo predstavili osnovno logiko algoritma v psevdokodi.
 
-\paragraph{Sistematični pregled za majhna drevesa:}
 
+
+%\begin{framed}
+\paragraph{Sistematični pregled za majhna drevesa:}
 \begin{verbatim}
 Za n = 1 do 10:
     Generiraj vsa neizomorfna drevesa T_n
@@ -173,7 +176,10 @@ Za n = 1 do 10:
         Izracunaj SO_alpha(T) za alpha v {0.05, 0.45, 0.5, 0.55, 0.95}
     Identificiraj drevesa z najvecjim SO_alpha
 \end{verbatim}
+%\end{framed}
 
+\newpage
+%\begin{framed}
 \paragraph{Stohastični pristop za velika drevesa:}
 
 \begin{verbatim}
@@ -187,6 +193,7 @@ Za dano n in alpha:
                 Sprejmi spremembo
     Shrani drevo z največjim SO_alpha
 \end{verbatim}
+%\end{framed}
 
 \subsection{Analiza majhnih dreves}
 
@@ -225,30 +232,10 @@ vrednost največje stopnje $\Delta$, pri kateri se ta maksimum pojavi.
 
 \medskip
 
+
 \subsubsection{Primer za $n = 7$}
 
 Kot reprezentativen primer si oglejmo primer $n = 7$.
-Rezultati pokažejo, da Somborjev indeks za vse \mbox{obravnavane} vrednosti parametra $\alpha$
-monotono narašča z naraščanjem maksimalne stopnje $\Delta$.
-Globalni \mbox{maksimum} je v vseh primerih dosežen pri drevesu z $\Delta = 6$,
-kar ustreza zvezdastemu drevesu.
-To drevo vsebuje eno vozlišče stopnje $6$, ki je povezano z vsemi preostalimi vozlišči,
-kar povzroči največji možni prispevek k vrednosti indeksa.
-
-\medskip
-
-Opazimo tudi, da se z večanjem parametra $\alpha$ razlike med vrednostmi
-Somborjevega indeksa pri različnih vrednostih $\Delta$ še povečujejo.
-To pomeni, da večje vrednosti $\alpha$ dodatno poudarijo prispevek povezav,
-ki povezujejo vozlišča z visokimi stopnjami, kar pride posebej do izraza
-pri zvezdastih drevesih.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.25\textwidth]{zvezda7.png}
-\caption{Zvezdno drevo reda $n=7$ z maksimalno stopnjo $\Delta = 6$.}
-\label{fig:zvezda7}
-\end{figure}
 
 \begin{table}[H]
 \centering
@@ -271,12 +258,62 @@ $\alpha$
 \caption{Maksimalne vrednosti splošnega Somborjevega indeksa $SO_\alpha$ za drevesa reda $n=7$ in vse možne maksimalne stopnje $\Delta$.}
 \end{table}
 
+\paragraph{Optimalno drevo pri fiksnem $\alpha$:}
+Rezultati pokažejo, da Somborjev indeks za vse \mbox{obravnavane} vrednosti parametra $\alpha$
+monotono narašča z naraščanjem maksimalne stopnje $\Delta$.
+Globalni \mbox{maksimum} je v vseh primerih dosežen pri drevesu z $\Delta = 6$,
+kar ustreza zvezdastemu drevesu.
+To drevo vsebuje eno vozlišče stopnje $6$, ki je povezano z vsemi preostalimi vozlišči,
+kar povzroči največji možni prispevek k vrednosti indeksa.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{zvezda7.png}
+\caption{Optimalno drevo pri fiksnem $\alpha$ za $n=7$ (enako za vse $\alpha$).}
+\label{fig:zvezda7}
+\end{figure}
+
+%\caption{Zvezdno drevo reda $n=7$ z maksimalno stopnjo $\Delta = 6$.}
+
+\medskip
+
+\paragraph{Optimalno drevo pri fiksnem $\Delta$:}
+\begin{comment}
+Opazimo tudi, da se z večanjem parametra $\alpha$ vrednosti
+Somborjevega indeksa pri neki fiksni $\Delta$ še povečujejo.
+To pomeni, da večje vrednosti $\alpha$ dodatno poudarijo prispevek povezav,
+ki povezujejo vozlišča z visokimi stopnjami, kar pride posebej do izraza
+pri zvezdastih drevesih.    
+\end{comment}
+
+
+Rezultati kažejo, da je za vsako fiksno $\Delta$ vrednost Somborjevega indeksa monotono
+naraščajoča funkcija parametra $\alpha$. Optimalno drevo za dano $\Delta$ se pri tem praviloma ne spremeni,
+temveč se z večanjem $\alpha$ povečuje zgolj absolutna vrednost indeksa. To pomeni, da parameter $\alpha$
+ne vpliva na izbiro optimalne strukture pri fiksni $\Delta$, temveč le poudarja prispevke povezav, ki povezujejo
+vozlišča z večjimi stopnjami.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{fiksendelta7.png}
+\caption{Optimalno drevo pri fiksnem $\Delta = 4$ za $n=7$ (enako za vse $\alpha$).}
+\label{fig:fiksendelta7}
+\end{figure}
+
+\paragraph{Sklep:}
 Na podlagi izčrpne računske analize majhnih grafov lahko sklenemo, da za vsako
 obravnavano število vozlišč $n \leq 10$ in za vsak parameter $\alpha \in (0,1)$
 Somborjev indeks na razredu dreves doseže največjo vrednost pri grafih z
 največjo možno maksimalno stopnjo $\Delta = n-1$. Z večanjem števila vozlišč se vrednost Somborjevega indeksa povečuje,
 vendar osnovni trendi, povezani z vplivom parametra $\alpha$ in strukture drevesa,
 ostajajo enaki. To omogoča smiselno primerjavo rezultatov med majhnimi in večjimi drevesi.
+Poleg tega smo pri majhnih drevesih ugotovili, da je za fiksno največjo stopnjo
+$\Delta$ vrednost Somborjevega indeksa monotono naraščajoča funkcija parametra
+$\alpha \in (0,1)$. Optimalna struktura drevesa za dano $\Delta$ se pri tem ne
+spreminja, temveč parameter $\alpha$ vpliva zgolj na absolutno velikost indeksa.
+Ta ugotovitev dodatno potrjuje, da ima razporeditev stopenj vozlišč ključno vlogo
+pri določanju optimalnih struktur, medtem ko parameter $\alpha$ deluje predvsem
+kot utež, ki poudarja prispevke posameznih povezav.
 
 \subsection{Analiza velikih dreves}
 
@@ -301,16 +338,15 @@ $\Delta$ drevesa z bolj uravnoteženo porazdelitvijo stopenj relativno visoke vr
 vrednosti, dosežene pri ekstremno razvejanih strukturah. To kaže, da je vpliv največje stopnje \mbox{razvejanosti} ključen
 tudi pri velikih grafih, pri čemer zvezdno drevo ostaja globalno optimalna struktura.
 
-\subsubsection{Primer za $n=60$}
-Kot reprezentativen primer si oglejmo primer $n = 60$.
-Rezultati, prikazani v Tabeli 2, kažejo, da Somborjev indeks za vse obravnavane vrednosti parametra $\alpha$
-monotono narašča z naraščanjem maksimalne stopnje $\Delta$.
+\subsubsection{Primer za $n = 60$}
 
-\medskip
+Kot reprezentativen primer si oglejmo drevesa z $n = 60$ vozlišči. Zaradi velikega števila
+možnih struktur je bila analiza izvedena s stohastičnim iskanjem, pri čemer smo za različne
+vrednosti parametra $\alpha \in (0,1)$ in izbrane vrednosti največje stopnje $\Delta$
+določili približne maksimalne vrednosti splošnega Somborjevega indeksa.
 
-Opazimo, da se z večanjem parametra $\alpha$ razlike med vrednostmi Somborjevega indeksa pri različnih $\Delta$ še povečujejo.
-To pomeni, da večje vrednosti $\alpha$ dodatno poudarijo prispevek povezav, ki povezujejo vozlišča z visokimi stopnjami,
-kar je posebej izrazito pri ekstremno razvejanih drevesih, kot je zvezdno drevo.
+Rezultati so zbrani v Tabeli~2, kjer so prikazane maksimalne vrednosti indeksa za izbrane
+kombinacije parametrov $\alpha$ in $\Delta$.
 
 \begin{table}[H]
 \centering
@@ -383,20 +419,43 @@ za drevesa reda $n=60$ pri različnih vrednostih parametra $\alpha$
 in maksimalne stopnje $\Delta$.}
 \end{table}
 
-Kot pri manjših grafih je globalni maksimum Somborjevega indeksa dosežen pri $\Delta = n-1$, 
-kar ustreza zvezdnemu drevesu z enim dominantnim vozliščem. To potrjuje, da tudi pri večjih drevesih
-ekstremno razvejane strukture ostajajo optimalne glede na Somborjev indeks.
+\paragraph{Optimalno drevo pri fiksnem $\alpha$:}
+Podobno kot pri majhnih drevesih tudi pri $n=60$ opazimo, da je za vsako obravnavano
+vrednost parametra $\alpha$ Somborjev indeks monotono naraščajoča funkcija maksimalne
+stopnje $\Delta$. Globalni maksimum je v vseh primerih dosežen pri $\Delta = n-1 = 59$,
+kar ustreza zvezdnemu drevesu z enim dominantnim vozliščem, povezanim z vsemi preostalimi
+vozlišči.
+
+Čeprav pri vmesnih vrednostih $\Delta$ dobimo relativno visoke vrednosti indeksa,
+te ne presežejo vrednosti, dosežene pri ekstremno razvejanih strukturah. To potrjuje,
+da tudi pri velikih drevesih zvezdno drevo ostaja globalno optimalna struktura glede
+na Somborjev indeks.
 
 \medskip
 
-Rezultati stohastičnega iskanja se lahko med posameznimi zagoni nekoliko razlikujejo, kar je pričakovano zaradi 
-naključne narave algoritma. Kljub temu se dobljene optimalne strukture dosledno gibljejo okoli podobnih vrednosti 
-največje stopnje in imajo primerljivo porazdelitev stopenj, kar potrjuje stabilnost opaženih strukturnih lastnosti.
+\paragraph{Optimalno drevo pri fiksnem $\Delta$:}
+Pri fiksni največji stopnji $\Delta$ rezultati kažejo, da je vrednost Somborjevega indeksa
+monotono naraščajoča funkcija parametra $\alpha$. Optimalna struktura drevesa se pri tem
+ne spreminja bistveno, temveč se z večanjem $\alpha$ povečuje predvsem absolutna vrednost
+indeksa.
+
+Pri velikih drevesih optimalna drevesa za dano $\Delta$ praviloma niso enolična, vendar
+imajo podobno porazdelitev stopenj. Značilno je, da se z naraščanjem $\Delta$ zmanjšuje
+število vozlišč z maksimalno stopnjo, hkrati pa se pojavljajo vozlišča z drugo največjo
+stopnjo, ki pomembno prispevajo k skupni vrednosti indeksa. To kaže, da optimalne
+strukture pri fiksni $\Delta$ niso popolnoma centralizirane, temveč bolj razpršene.
 
 \medskip
 
-Ker smo pri velikih drevesih uporabili iste vrednosti parametra $\alpha$ kot pri majhnih, lahko rezultate obeh \mbox{pristopov}
-med seboj neposredno primerjamo in tako dobimo celovit vpogled v vpliv $\alpha$ in razvejanosti na \mbox{Somborjev} indeks.
+\paragraph{Sklep:}
+Primer za $n=60$ potrjuje ugotovitve iz analize majhnih dreves. Globalni maksimum
+Somborjevega indeksa je za vse obravnavane vrednosti parametra $\alpha \in (0,1)$
+dosežen pri največji možni maksimalni stopnji $\Delta = n-1$. Hkrati pa analiza pri
+fiksni $\Delta$ pokaže, da parameter $\alpha$ ne vpliva na izbiro optimalne strukture,
+temveč zgolj na absolutno vrednost indeksa. S tem se potrjuje, da ima razporeditev
+stopenj vozlišč ključno vlogo pri določanju optimalnih dreves, medtem ko parameter
+$\alpha$ deluje kot utež, ki poudarja prispevke povezav z večjimi stopnjami.
+
 
 \subsection{Povzetek ugotovitev}
 
